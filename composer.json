@@ -27,5 +27,6 @@
         "psr-4": {
             "Q1lon\\Encrypt\\":"src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
