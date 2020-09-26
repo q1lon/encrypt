@@ -5,6 +5,7 @@ namespace Q1lon\Encrypt;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
+
 class Md5HasherProvider extends ServiceProvider implements DeferrableProvider
 {
 
@@ -26,6 +27,7 @@ class Md5HasherProvider extends ServiceProvider implements DeferrableProvider
         $this->app->singleton("md5hash", function ($app) {
             return new Md5Hasher($app['config']);
         });
+
     }
 
     /**
@@ -40,7 +42,7 @@ class Md5HasherProvider extends ServiceProvider implements DeferrableProvider
 //            __DIR__ . '/config/md5Hash.php' => config_path('md5Hash.php'), // 发布配置文件到 laravel 的config 下
 //        ]);
 
-        $source = realpath($raw = __DIR__.'/config/md5Hash.php') ?: $raw;
+        $source = realpath($raw = __DIR__ . '/config/md5Hash.php') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('md5Hash.php')]);

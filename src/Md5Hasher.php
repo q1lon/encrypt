@@ -1,16 +1,20 @@
 <?php
 
 namespace Q1lon\Encrypt;
+
+use Illuminate\Config\Repository;
+
 /**
  * Class Md5Hasher
  * @package Q1lon\Encrypt
  */
 class Md5Hasher
 {
-    private $options  = [];
-    function __construct($options)
+    private $options = [];
+
+    function __construct(Repository $config = null)
     {
-        $this->options = $options;
+        $this->options = $config ? $config->get('md5Hash.options') : [];
     }
 
     /**
